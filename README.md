@@ -1,0 +1,2 @@
+# rangenix
+My NixOS configuration
