@@ -1,0 +1,13 @@
+{ ... }:
+
+{
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      font-family = "Iosevka NFM Medium";
+      theme = "catppuccin-mocha";
+      window-decoration = "none";
+      cursor-invert-fg-bg = true;
+    };
+  };
+}

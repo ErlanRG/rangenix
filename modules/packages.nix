@@ -17,5 +17,14 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [ git ];
+  environment.systemPackages = with pkgs; [
+    eza
+    findutils
+    firefox
+    git
+    keepassxc
+    lazygit
+    librewolf
+    xdg-user-dirs
+  ];
 }

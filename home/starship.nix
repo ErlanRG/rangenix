@@ -1,0 +1,73 @@
+{ config, lib, ... }:
+
+{
+  programs.starship = {
+    enable = true;
+    settings = {
+      format = "$directory$git_branch$character";
+      right_format = "$python$git_status$cmd_duration";
+
+      # Other languages configurations:
+      c.disabled = true;
+      cmake.disabled = true;
+      haskell.disabled = true;
+      ruby.disabled = true;
+      rust.disabled = true;
+      perl.disabled = true;
+      package.disabled = true;
+      lua.disabled = true;
+      nodejs.disabled = true;
+      java.disabled = true;
+      golang.disabled = true;
+      python = {
+        format =
+          "[]($style)[\${symbol}\${pyenv_prefix}(($virtualenv) )](bg:#313244 fg:#F9E2AF)[ ]($style)";
+        style = "bg:none fg:#313244";
+        symbol = "  ";
+      };
+      character = {
+        success_symbol = "[](#A6E3A1 bold)";
+        error_symbol = "[](#FAB387)";
+        vicmd_symbol = "[](#F9E2AF)";
+      };
+      directory = {
+        format =
+          "[]($style)[ ](bg:#313244 fg:#F9E2AF)[$path](bg:#313244 fg:#94e2d5 bold)[ ]($style)";
+        style = "bg:none fg:#313244";
+        truncation_length = 3;
+        truncate_to_repo = false;
+      };
+      git_branch = {
+        format =
+          "[]($style)[[ ](bg:#313244 fg:#A6E3A1 bold)$branch](bg:#313244 fg:#94e2d5)[ ]($style)";
+        style = "bg:none fg:#313244";
+      };
+      git_status = {
+        # $all status$ahead_behind;
+        format =
+          "[]($style)[$all_status$ahead_behind](bg:#313244 fg:#b4befe)[ ]($style)";
+        style = "bg:none fg:#313244";
+        conflicted = "=";
+        ahead = "⇡\${count}";
+        behind = "⇣\${count}";
+        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+        up_to_date = "";
+        untracked = "?\${count}";
+        stashed = "";
+        modified = "!\${count}";
+        staged = "+\${count}";
+        renamed = "»\${count}";
+        deleted = "\${count}";
+      };
+
+      cmd_duration = {
+        min_time = 1;
+        # duration & style
+        format =
+          "[]($style)[[󰔚 ](bg:#313244 fg:#eba0ac bold)$duration](bg:#313244 fg:#BBC3DF)[ ]($style)";
+        disabled = false;
+        style = "bg:none fg:#313244";
+      };
+    };
+  };
+}
